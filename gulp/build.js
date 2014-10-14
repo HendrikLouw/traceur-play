@@ -15,3 +15,7 @@ gulp.task('build', function() {
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(config.distPath));
 });
+
+gulp.task('build:watch', function() {
+  return gulp.watch(config.srcFiles, ['build']);
+});

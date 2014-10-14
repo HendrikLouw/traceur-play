@@ -9,7 +9,6 @@ var testFiles = [
 ];
 
 gulp.task('test', ['build'], function() {
-  // Be sure to return the stream
   return gulp.src(testFiles)
     .pipe(karma({
       configFile: './test/karma.conf.js',
@@ -19,4 +18,12 @@ gulp.task('test', ['build'], function() {
       // Make sure failed tests cause gulp to exit non-zero
       throw err;
     });
+});
+
+gulp.task('test:watch', ['build:watch'], function() {
+  return gulp.src(testFiles)
+    .pipe(karma({
+      configFile: './test/karma.conf.js',
+      action: 'watch'
+    }))
 });
