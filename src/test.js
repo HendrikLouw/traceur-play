@@ -1,1 +1,3 @@
-var a = 'asdfafs';
+function bla() {
+  return "bla";
+}

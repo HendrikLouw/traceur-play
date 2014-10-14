@@ -1,12 +1,14 @@
 var gulp = require('gulp');
 var karma = require('gulp-karma');
+var build = require('./build');
+var config = require('./../package.json').config;
 
 var testFiles = [
-  'src/**/*.js',
-  'test/**/*.js'
+  config.minFileRelativePath,
+  config.testFiles
 ];
 
-gulp.task('test', function() {
+gulp.task('test', ['build'], function() {
   // Be sure to return the stream
   return gulp.src(testFiles)
     .pipe(karma({

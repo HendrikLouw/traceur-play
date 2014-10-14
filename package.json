@@ -1,4 +1,11 @@
 {
+  "config": {
+    "srcFiles": "src/**/*.js",
+    "testFiles": "test/**/*Spec.js",
+    "minFile": "app.min.js",
+    "minFileRelativePath": "dist/app.min.js",
+    "distPath": "dist/"
+  },
   "devDependencies": {
     "gulp": "~3.8.8",
     "gulp-traceur": "~0.13.0",

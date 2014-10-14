@@ -1,6 +1,6 @@
 // Karma configuration
 // Generated on Tue Oct 14 2014 20:58:35 GMT+0200 (SAST)
-
+var localConfig = require('../package.json');
 module.exports = function(config) {
   config.set({
 
@@ -15,8 +15,8 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'src/**/*.js',
-      'test/**/*.js'
+      localConfig.minFileRelativePath,
+      localConfig.testFiles
     ],
 
 
