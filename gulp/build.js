@@ -3,10 +3,12 @@ var sourcemaps = require('gulp-sourcemaps');
 var traceur = require('gulp-traceur');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
+var sass = require('gulp-sass');
+var minifyCSS = require('gulp-minify-css');
 
 var config = require('./../package.json').config;
 
-gulp.task('build', function() {
+gulp.task('build-js', function() {
   return gulp.src(config.srcFiles)
     .pipe(sourcemaps.init())
     .pipe(traceur())
@@ -16,6 +18,17 @@ gulp.task('build', function() {
     .pipe(gulp.dest(config.distPath));
 });
 
-gulp.task('build:watch', function() {
+gulp.task('build-js:watch', function() {
   return gulp.watch(config.srcFiles, ['build']);
+});
+
+gulp.task('build-sass', function() {
+  return gulp.src(config.styleFiles)
+
+    .pipe(sass())
+    .pipe(sourcemaps.init())
+    .pipe(concat(config.minStyleFile))
+    .pipe(minifyCSS())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(config.distPath));
 });
