@@ -6,6 +6,7 @@ var uglify = require('gulp-uglify');
 var sass = require('gulp-sass');
 var minifyCSS = require('gulp-minify-css');
 var browserSync = require('./browserSync').browserSync;
+var test = require('./test');
 
 var config = require('./../package.json').config;
 
@@ -42,6 +43,6 @@ gulp.task('bs-reload', function () {
     browserSync.reload();
 });
 
-gulp.task('build:watch', ['build-sass:watch', 'build-js:watch'], function () {
+gulp.task('build:watch', ['build-sass:watch', 'test:watch'], function () {
   return gulp.watch("*.html", ['bs-reload']);
 });
