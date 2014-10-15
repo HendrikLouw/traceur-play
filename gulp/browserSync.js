@@ -9,3 +9,5 @@ gulp.task('browser-sync', function() {
         }
     });
 });
+
+exports.browserSync = browserSync;

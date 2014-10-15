@@ -5,6 +5,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var sass = require('gulp-sass');
 var minifyCSS = require('gulp-minify-css');
+var browserSync = require('./browserSync').browserSync;
 
 var config = require('./../package.json').config;
 
@@ -24,11 +25,15 @@ gulp.task('build-js:watch', function() {
 
 gulp.task('build-sass', function() {
   return gulp.src(config.styleFiles)
-
     .pipe(sass())
     .pipe(sourcemaps.init())
     .pipe(concat(config.minStyleFile))
     .pipe(minifyCSS())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(config.distPath));
+    .pipe(gulp.dest(config.distPath))
+    .pipe(browserSync.reload({stream:true}));
+});
+
+gulp.task('build-sass:watch', ['browser-sync'], function() {
+  return gulp.watch(config.styleFiles, ['build-sass']);
 });
