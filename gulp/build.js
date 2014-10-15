@@ -20,7 +20,7 @@ gulp.task('build-js', function() {
 });
 
 gulp.task('build-js:watch', function() {
-  return gulp.watch(config.srcFiles, ['build']);
+  return gulp.watch(config.srcFiles, ['build-js']);
 });
 
 gulp.task('build-sass', function() {
@@ -36,4 +36,12 @@ gulp.task('build-sass', function() {
 
 gulp.task('build-sass:watch', ['browser-sync'], function() {
   return gulp.watch(config.styleFiles, ['build-sass']);
+});
+
+gulp.task('bs-reload', function () {
+    browserSync.reload();
+});
+
+gulp.task('build:watch', ['build-sass:watch', 'build-js:watch'], function () {
+  return gulp.watch("*.html", ['bs-reload']);
 });
