@@ -30,8 +30,8 @@ gulp.task('build-sass', function() {
     .pipe(concat(config.minStyleFile))
     .pipe(minifyCSS())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(config.distPath))
-    .pipe(browserSync.reload({stream:true}));
+    .pipe(browserSync.reload({stream:true}))
+    .pipe(gulp.dest(config.distPath));
 });
 
 gulp.task('build-sass:watch', ['browser-sync'], function() {

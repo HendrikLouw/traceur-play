@@ -8,7 +8,7 @@ var testFiles = [
   config.testFiles
 ];
 
-gulp.task('test', ['build'], function() {
+gulp.task('test', ['build-js'], function() {
   return gulp.src(testFiles)
     .pipe(karma({
       configFile: './test/karma.conf.js',
@@ -20,7 +20,7 @@ gulp.task('test', ['build'], function() {
     });
 });
 
-gulp.task('test:watch', ['build:watch'], function() {
+gulp.task('test:watch', ['build-js:watch'], function() {
   return gulp.src(testFiles)
     .pipe(karma({
       configFile: './test/karma.conf.js',
