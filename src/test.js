@@ -1,3 +1,3 @@
 function bla() {
-  return "bla";
+    return "bla";
 }
